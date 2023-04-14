@@ -92,11 +92,7 @@ const Header = () => {
       </div>
       <div className={s.mainHeader}>
         <div className={s.logo}>
-          <img
-            src='https://www.yaegercpareview.com/assets/img/yaeger/logo_green-gray.png'
-            alt=''
-            class='c-desktop-logo'
-          />
+          <img src='https://www.yaegercpareview.com/assets/img/yaeger/logo_green-gray.png' alt='' />
         </div>
         <div className={s.navBar}>
           {menu.map((menuItem, menuItemIndex) => {
