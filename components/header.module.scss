@@ -1,5 +1,4 @@
 .topHeader {
-  background: #f8f8f8;
   font-size: 16px;
   font-family: Oxygen;
   font-weight: 400;
@@ -28,8 +27,6 @@
           bottom: -6px;
           left: -50%;
           width: 100%;
-          -ms-transform: scaleX(0);
-          -webkit-transform: scaleX(0);
           transform: scaleX(0);
           border-top: 1px solid #038740;
           content: "";
@@ -40,7 +37,6 @@
         &:hover {
           &:after {
             backface-visibility: hidden;
-            -webkit-transform: scaleX(1);
             transform: scaleX(1);
             transition: all 0.2s ease-in-out;
             left: 0%;
@@ -52,7 +48,6 @@
 }
 
 .mainHeader {
-  background-color: #f8f8f8;
   display: flex;
   flex-direction: row;
 
@@ -85,7 +80,6 @@
 
     display: flex;
     flex-direction: row;
-    background: #f8f8f8;
     font-size: 16px;
     font-family: Oxygen;
     font-weight: 400;
@@ -116,7 +110,7 @@
         background: #038740;
         min-width: 200px;
         display: none;
-
+        transition: 0.5s;
         z-index: 99;
         margin: 0px 0 0 10px;
 

@@ -1,6 +1,21 @@
 import React, { useState } from "react";
 import s from "./header.module.scss";
 
+const topHeaderMenu = [
+  {
+    name: "Contact Us",
+    link: "#",
+  },
+  {
+    name: "Student Login",
+    link: "#",
+  },
+  {
+    name: "My Cart",
+    link: "#",
+  },
+];
+
 const menu = [
   {
     name: "PRODUCTS",
@@ -79,15 +94,15 @@ const Header = () => {
     <div>
       <div className={s.topHeader}>
         <div className={s.socialLinks}>
-          <a>
-            <span>Contact Us</span>
-          </a>
-          <a>
-            <span>Student Login</span>
-          </a>
-          <a>
-            <span>My Cart</span>
-          </a>
+          {topHeaderMenu &&
+            topHeaderMenu.length > 0 &&
+            topHeaderMenu.map((topHeaderMenuItem, topHeaderMenuItemIndex) => {
+              return (
+                <a key={topHeaderMenuItemIndex} href={topHeaderMenu.link}>
+                  <span>{topHeaderMenuItem.name}</span>
+                </a>
+              );
+            })}
         </div>
       </div>
       <div className={s.mainHeader}>
@@ -95,37 +110,39 @@ const Header = () => {
           <img src='https://www.yaegercpareview.com/assets/img/yaeger/logo_green-gray.png' alt='' />
         </div>
         <div className={s.navBar}>
-          {menu.map((menuItem, menuItemIndex) => {
-            return (
-              <div
-                className={s.menuItem}
-                key={menuItemIndex}
-                onMouseEnter={() => {
-                  setIsShown(true);
-                  setSelectedMenuIndex(menuItemIndex);
-                }}
-                onMouseLeave={(e) => {
-                  setIsShown(false);
-                  setSelectedMenuIndex(null);
-                }}>
-                <a href={menuItem.link}>{menuItem.name}</a>
-                {isShown &&
-                  menuItem.subMenu &&
-                  menuItem.subMenu.length > 0 &&
-                  selectedMenuIndex === menuItemIndex && (
-                    <ul className={`${s.submenu} ${isShown && s.showSubMenu}`}>
-                      {menuItem.subMenu.map((subMenuItem, subMenuItemIndex) => {
-                        return (
-                          <li key={subMenuItemIndex}>
-                            <a href={subMenuItem.link}>{subMenuItem.name}</a>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )}
-              </div>
-            );
-          })}
+          {menu &&
+            menu.length > 0 &&
+            menu.map((menuItem, menuItemIndex) => {
+              return (
+                <div
+                  className={s.menuItem}
+                  key={menuItemIndex}
+                  onMouseEnter={() => {
+                    setIsShown(true);
+                    setSelectedMenuIndex(menuItemIndex);
+                  }}
+                  onMouseLeave={(e) => {
+                    setIsShown(false);
+                    setSelectedMenuIndex(null);
+                  }}>
+                  <a href={menuItem.link}>{menuItem.name}</a>
+                  {isShown &&
+                    menuItem.subMenu &&
+                    menuItem.subMenu.length > 0 &&
+                    selectedMenuIndex === menuItemIndex && (
+                      <ul className={`${s.submenu} ${isShown && s.showSubMenu}`}>
+                        {menuItem.subMenu.map((subMenuItem, subMenuItemIndex) => {
+                          return (
+                            <li key={subMenuItemIndex}>
+                              <a href={subMenuItem.link}>{subMenuItem.name}</a>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                </div>
+              );
+            })}
         </div>
         <div className={s.cart}>
           <svg xmlns='http://www.w3.org/2000/svg' height='30' viewBox='0 96 960 960' width='30'>
